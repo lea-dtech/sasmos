@@ -18,7 +18,9 @@ session_start();
     <?php
     include "includes/header.php";
     ?>
-    
+    <div>
+        <h1 style="text-align: center;">SASMOS: INOVATION IS OUR HOBY.</h1>
+    </div>
 
     <?php
     include "includes/signup_modal.php";
