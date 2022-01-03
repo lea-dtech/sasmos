@@ -10,12 +10,12 @@ $user_id = $_SESSION['user_id'];
 
 $sql_1 = "SELECT * FROM users WHERE s_no=$user_id";
 
-$result_1 = mysqli_query($conn, $sql_1);
+$result_1 = pg_query($conn, $sql_1);
 if (!$result_1) {
     echo "Something went wrong!";
     return;
 }
-$user = mysqli_fetch_assoc($result_1);
+$user = pg_fetch_object($result_1);
 if (!$user) {
     echo "Something went wrong!";
     return;
@@ -23,12 +23,12 @@ if (!$user) {
 
 $sql_2 = "SELECT * FROM employees";
 
-$result_2 = mysqli_query($conn, $sql_2);
+$result_2 = pg_query($conn, $sql_2);
 if (!$result_2) {
     echo "Something went wrong!";
     return;
 }
-$employees = mysqli_fetch_assoc($result_2);
+$employees = pg_fetch_object($result_2);
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +85,7 @@ $employees = mysqli_fetch_assoc($result_2);
 
         <div id="fourth">
             <h1>Search Employee</h1>
-            <form id="employee_search" method="POST" action="#">
+            <form id="employee_search" method="POST" action="api/employee_search.php">
                 Employee Phone No:
                 <input placeholder="Enter Phone No" minlength="10" maxlength="10" name="phone" required /><br></br>
                 <button class="button" type="submit">Search</button>

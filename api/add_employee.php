@@ -10,14 +10,14 @@ $full_name=$_POST['name'];
 $phone = $_POST['phone'];
 
 $sql = "SELECT * FROM employees WHERE phone='$phone'";
-$result = mysqli_query($conn, $sql);
+$result = pg_query($conn, $sql);
 if (!$result) {
     $response = array("success"=> false, "message"=> "Something went wrong!");
     echo json_encode($response);
     return;
 }
 
-$row_count = mysqli_num_rows($result);
+$row_count = pg_num_rows($result);
 if ($row_count != 0) {
     $response = array("success"=> false, "message" => "Mobile No. $phone is already registered with us!");
     echo json_encode($response);
@@ -25,7 +25,7 @@ if ($row_count != 0) {
 }
 
 $sql_1 = "INSERT INTO employees(full_name, phone) VALUES ('$full_name', '$phone')";
-$result_1 = mysqli_query($conn, $sql_1);
+$result_1 = pg_query($conn, $sql_1);
 if (!$result_1) {
     $response = array("success"=> false, "message"=> "Something went wrong!");
     echo json_encode($response);
@@ -34,5 +34,5 @@ if (!$result_1) {
 
 $response = array("success"=> true, "message"=> "Employee added successfuly!");
 echo json_encode($response);
-mysqli_close($conn);
+pg_close($conn);
 ?>
