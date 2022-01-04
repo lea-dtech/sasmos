@@ -138,7 +138,6 @@ var employee_search_success = function (event) {
     var response = JSON.parse(event.target.responseText);
     if (response.success) {
         alert(response.message);
-        alert(response.message_1);
     } else {
         alert(response.message);
     }
