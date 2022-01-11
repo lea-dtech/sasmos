@@ -94,14 +94,51 @@ $employees = pg_fetch_object($result_2);
     </div>
 
     <div>
-        <h1>Want to give task to your employee</h1>
-        <form id="add_task" style="margin-bottom: 10px;" method="POST" action="#">
-            Employee phone No:
-            <input placeholder="Enter Phone No" minlength="10" maxlength="10" name="phone" required /><br></br>
-            <textarea maxlength="480" name="task" cols="50" rows="5" placeholder="Enter task"></textarea><br />
-            <button class="button" type="submit">Give Task</button>
-        </form>
+        <div id="fifth">
+            <h1>Want to give task to your employee</h1>
+            <form id="add_task" style="margin-bottom: 10px;" method="POST" action="#">
+                Employee phone No:
+                <input placeholder="Enter Phone No" minlength="10" maxlength="10" name="phone" required /><br></br>
+                <textarea maxlength="480" name="task" cols="50" rows="5" placeholder="Enter task"></textarea><br />
+                <button class="button" type="submit">Give Task</button>
+            </form>
+        </div>
+
+        <div id="sixth">
+            <h1>Your employees</h1>
+            <?php
+
+            $sql_3 = "SELECT * FROM employees";
+            $result_3 = pg_query($conn, $sql_3);
+
+            $row_count = pg_num_rows($result_3);
+
+            ?>
+            <table border="1" cellspacing="0" cellpadding="5">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone No.</th>
+                </tr>
+
+                <?php
+
+                if ($row_count != 0) {
+                    while ($row = pg_fetch_assoc($result_3)) {
+                        echo "<tr>
+                <td>$row[s_no]</td>
+                <td>$row[full_name]</td>
+                <td>$row[phone]</td>
+            </tr>";
+                    }
+                } else {
+                    echo "No Data available";
+                }
+                ?>
+            </table>
+        </div>
     </div>
+
 
     <?php
     include "includes/signup_modal.php";
