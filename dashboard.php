@@ -132,7 +132,10 @@ $employees = pg_fetch_object($result_2);
             </tr>";
                     }
                 } else {
-                    echo "No Data available";
+                    echo "
+                    <tr>
+                        <td colspan='3'>No data available!</td>
+                    </tr>";
                 }
                 ?>
             </table>
