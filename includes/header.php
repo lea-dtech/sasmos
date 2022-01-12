@@ -11,9 +11,9 @@
                 if (!isset($_SESSION["user_id"])) {
                 ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signup-modal">
+<!--                         <a class="nav-link" href="#" data-toggle="modal" data-target="#signup-modal">
                             <i class="fas fa-user"></i>Signup
-                        </a>
+                        </a> -->
                     </li>
                     <div class="nav-vl"></div>
                     <li class="nav-item">
